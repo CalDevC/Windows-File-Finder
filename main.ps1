@@ -23,7 +23,7 @@ if ($searchTermType -notin $termTypes) {
 Write-Host "Enter the types of files to search as a comma separated list (no spaces): "
 $fileTypes = Read-Host
 
-Write-Host "Enter the paths (begin with \\) to the Network folders that you want to search through as a comma separated list (no spaces): "
+Write-Host "Enter the full paths (begin with \\) to the directories that you want to search through as a comma separated list (no spaces): "
 $folderList = Read-Host
 
 foreach ($folder in $folderList.Split(",")) {
