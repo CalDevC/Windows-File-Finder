@@ -5,7 +5,7 @@ $folder = Read-Host
 Write-Host "Enter the keyword phrase: "
 $phrase = Read-Host
 
-Write-Host "Enter the types of files to search as a comma seperated list (no spaces): "
+Write-Host "Enter the types of files to search as a comma separated list (no spaces): "
 $fileTypes = Read-Host
 
 #For each provided file type

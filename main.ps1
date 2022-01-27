@@ -10,21 +10,23 @@ Set-Content -Path ".\$tempFound" -Value ""
 Write-Host "Enter the search type (R - recursive OR L - local): "
 $searchType = Read-Host
 
-if ($searchType -ne "R" -AND $searchType -ne "r" -AND $searchType -ne "L" -AND $searchType -ne "l") {
+if ($searchType -notin $searchTypes) {
   Write-Host "Invalid search type entered"
 }
 
 Write-Host "Enter the search term type (R - range OR P - phrase): "
 $searchTermType = Read-Host
 
+if ($searchTermType -notin $termTypes) {
+  Write-Host "Invalid search term type entered"
+}
+
+#Launch either a phrase or range search
 if ($searchTermType -eq "P" -OR $searchTermType -eq "p") {
   . .\phraseSearch.ps1
 }
-elseif ($searchTermType -eq "P" -OR $searchTermType -eq "p") {
+elseif ($searchTermType -eq "R" -OR $searchTermType -eq "r") {
   . .\rangeSearch.ps1
-}
-else {
-  Write-Host "Invalid search term type entered"
 }
 
 
