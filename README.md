@@ -1,5 +1,5 @@
 # File Finder
-**Created 01/27/2022 by WUPQTA**
+**Created 01/27/2022 by Chase Alexander**
 
 This project is a PowerShell script that can be used to search Windows directories for files containing a certain sequence of characters in their name.\
 The user has the ability to:
