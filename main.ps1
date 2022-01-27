@@ -4,7 +4,6 @@
 #Clear file contents
 Set-Content -Path ".\$detected" -Value ""
 Set-Content -Path ".\$notDetected" -Value ""
-Set-Content -Path ".\$tempFound" -Value ""
 
 #Get info from user about the type of search and validate
 Write-Host "Enter the search type (R - recursive OR L - local): "
@@ -28,6 +27,10 @@ Write-Host "Enter the paths (begin with \\) to the Network folders that you want
 $folderList = Read-Host
 
 foreach ($folder in $folderList.Split(",")) {
+  #Clear the temporary file
+  Set-Content -Path ".\$tempFound" -Value ""
+  Add-Content -Path ".\$tempFound" -Value "Files found in ${folder}: "
+
   #Launch either a phrase or range search
   if ($searchTermType -eq "P" -OR $searchTermType -eq "p") {
     . .\phraseSearch.ps1
