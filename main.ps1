@@ -24,15 +24,18 @@ if ($searchTermType -notin $termTypes) {
 Write-Host "Enter the types of files to search as a comma separated list (no spaces): "
 $fileTypes = Read-Host
 
-Write-Host "Enter the path to the Network folder do you want to search (begin with \\): "
-$folder = Read-Host
+Write-Host "Enter the paths (begin with \\) to the Network folders that you want to search through as a comma separated list (no spaces): "
+$folderList = Read-Host
 
-#Launch either a phrase or range search
-if ($searchTermType -eq "P" -OR $searchTermType -eq "p") {
-  . .\phraseSearch.ps1
+foreach ($folder in $folderList.Split(",")) {
+  #Launch either a phrase or range search
+  if ($searchTermType -eq "P" -OR $searchTermType -eq "p") {
+    . .\phraseSearch.ps1
+  }
+  elseif ($searchTermType -eq "R" -OR $searchTermType -eq "r") {
+    . .\rangeSearch.ps1
+  }
 }
-elseif ($searchTermType -eq "R" -OR $searchTermType -eq "r") {
-  . .\rangeSearch.ps1
-}
+
 
 
