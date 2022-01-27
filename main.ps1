@@ -29,7 +29,7 @@ $folderList = Read-Host
 foreach ($folder in $folderList.Split(",")) {
   #Clear the temporary file
   Set-Content -Path ".\$tempFound" -Value ""
-  Add-Content -Path ".\$tempFound" -Value "Files found in ${folder}: "
+  Add-Content -Path ".\$detected" -Value "Files found in ${folder}: "
 
   #Launch either a phrase or range search
   if ($searchTermType -eq "P" -OR $searchTermType -eq "p") {

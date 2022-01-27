@@ -8,7 +8,7 @@ $range = $range.Split("-")
 [int]$upperBound = $range[1]
 
 #For each value in the specified range
-for ($current = $lowerBound; $current -lt $upperBound; $current += 1) {
+for ($current = $lowerBound; $current -le $upperBound; $current += 1) {
   $phrase = $current.ToString()
 
   #For each provided file type
