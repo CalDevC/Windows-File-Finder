@@ -21,6 +21,12 @@ if ($searchTermType -notin $termTypes) {
   Write-Host "Invalid search term type entered"
 }
 
+Write-Host "Enter the types of files to search as a comma separated list (no spaces): "
+$fileTypes = Read-Host
+
+Write-Host "Enter the path to the Network folder do you want to search (begin with \\): "
+$folder = Read-Host
+
 #Launch either a phrase or range search
 if ($searchTermType -eq "P" -OR $searchTermType -eq "p") {
   . .\phraseSearch.ps1

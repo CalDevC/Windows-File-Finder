@@ -1,12 +1,6 @@
 #Get info from user about the search
-Write-Host "Enter the path to the Network folder do you want to search (begin with \\): "
-$folder = Read-Host
-
 Write-Host "Enter the number range to search (separated by a `-` with no spaces): "
 $range = Read-Host
-
-Write-Host "Enter the types of files to search as a comma separated list (no spaces): "
-$fileTypes = Read-Host
 
 #separate range values
 $range = $range.Split("-")
