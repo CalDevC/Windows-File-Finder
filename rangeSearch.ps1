@@ -7,6 +7,8 @@ $range = $range.Split("-")
 [int]$lowerBound = $range[0]
 [int]$upperBound = $range[1]
 
+$prevContent = ""
+
 #For each value in the specified range
 for ($current = $lowerBound; $current -le $upperBound; $current += 1) {
   $phrase = $current.ToString()
@@ -25,11 +27,14 @@ for ($current = $lowerBound; $current -le $upperBound; $current += 1) {
 
   #Check if no files were found
   [string]$content = Get-Content -Path ".\$tempFound"
-  if ($content -eq "") {
+  if ($content -eq $prevContent) {
     Add-Content -Path ".\$notDetected" -Value $phrase
+    $prevContent = $content
   }
   else {
     Get-Content -Path ".\$tempFound" | Add-Content -Path ".\$detected"
   }
+
+  Set-Content -Path ".\$tempFound" -Value ""
 }
 
