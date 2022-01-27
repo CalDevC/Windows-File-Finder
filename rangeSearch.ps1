@@ -16,7 +16,7 @@ $range = $range.Split("-")
 #For each value in the specified range
 for ($current = $lowerBound; $current -lt $upperBound; $current += 1) {
   $phrase = $current.ToString()
-  
+
   #For each provided file type
   foreach ($type in $fileTypes.Split(",")) {
     if ($searchType -eq "r" -OR $searchType -eq "R") {
@@ -30,11 +30,12 @@ for ($current = $lowerBound; $current -lt $upperBound; $current += 1) {
   }
 
   #Check if no files were found
-  if (Get-Content -Path ".\$tempFound" -eq "") {
+  [string]$content = Get-Content -Path ".\$tempFound"
+  if ($content -eq "") {
     Add-Content -Path ".\$notDetected" -Value $phrase
   }
   else {
-    Add-Content -Path ".\$detected" -Value $detected
+    Get-Content -Path ".\$tempFound" | Add-Content -Path ".\$detected"
   }
 }
 

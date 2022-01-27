@@ -21,9 +21,10 @@ foreach ($type in $fileTypes.Split(",")) {
 }
 
 #Check if no files were found
-if (Get-Content -Path ".\$tempFound" -eq "") {
+[string]$content = Get-Content -Path ".\$tempFound"
+if ($content -eq "") {
   Add-Content -Path ".\$notDetected" -Value $phrase
 }
 else {
-  Add-Content -Path ".\$detected" -Value $detected
+  Get-Content -Path ".\$tempFound" | Add-Content -Path ".\$detected"
 }
